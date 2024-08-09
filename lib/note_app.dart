@@ -1,4 +1,4 @@
-import 'package:ai_notes/modules/splash/view.dart';
+import 'package:ai_notes/modules/note_list/note_list.dart';
 import 'package:ai_notes/repository/note_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +33,7 @@ class _NoteAppState extends State<NoteApp> {
             title: "Note",
             theme: ThemeData(useMaterial3: true),
             debugShowCheckedModeBanner: false,
-            home: SplashPage.instance(),
+            home: NoteListPage.instance(),
           ),
         );
       },

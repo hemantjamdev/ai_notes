@@ -36,11 +36,6 @@ class NoteListCubit extends Cubit<NoteListState> {
     }
   }
 
-  deleteNote() {
-    _repository.deleteAll();
-    getAllNotes();
-  }
-
   search(String value) async {
     try {
       final data = await _repository.getAll();
@@ -60,7 +55,7 @@ class NoteListCubit extends Cubit<NoteListState> {
           notes: filteredNotes,
         ));
       } else {
-        noteList = await getAllNoteList() ?? [];
+        noteList = await _repository.getAll() ?? [];
         emit(state.copyWith(
           isLoading: false,
           notes: noteList,
@@ -71,18 +66,42 @@ class NoteListCubit extends Cubit<NoteListState> {
     }
   }
 
-  Future<List<NoteModel>?> getAllNoteList() async {
-    return await _repository.getAll();
+  // Future<List<NoteModel>?> getAllNoteList() async {
+  //   return await _repository.getAll();
+  // }
+
+  indexChanged(int index) {
+    emit(state.copyWith(currentIndex: index));
   }
-// onPinned(NoteModel note) {
-//   note = note.copyWith(isPinned: !note.isPinned);
-//   _repository.update(note);
-//   getAllNotes();
-// }
-//
-// onPrivate(NoteModel note) {
-//   note = note.copyWith(isPrivate: !note.isPrivate);
-//   _repository.update(note);
-//   getAllNotes();
-// }
+
+  deleteAllNotes() {
+    _repository.deleteAll();
+    emit(state.copyWith(notes: []));
+  }
+
+  onPinned(NoteModel noteModel) {
+    List<NoteModel> list = List.from(state.notes);
+    NoteModel? note =
+        list.where((element) => element.id == noteModel.id).firstOrNull;
+    if (note == null) return;
+    note = note.copyWith(isPinned: !note.isPinned);
+    _repository.update(note);
+    getAllNotes();
+  }
+
+  onPrivate(NoteModel noteModel) {
+    List<NoteModel> list = List.from(state.notes);
+    NoteModel? note =
+        list.where((element) => element.id == noteModel.id).firstOrNull;
+    if (note == null) return;
+
+    note = note.copyWith(isPrivate: !note.isPrivate);
+    _repository.update(note);
+    getAllNotes();
+  }
+
+  onDelete(NoteModel noteModel) {
+    _repository.delete(noteModel.id);
+    getAllNotes();
+  }
 }

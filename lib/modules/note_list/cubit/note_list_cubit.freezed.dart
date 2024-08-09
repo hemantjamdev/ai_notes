@@ -19,6 +19,7 @@ mixin _$NoteListState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<NoteModel> get notes => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  int get currentIndex => throw _privateConstructorUsedError;
 
   /// Create a copy of NoteListState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +34,11 @@ abstract class $NoteListStateCopyWith<$Res> {
           NoteListState value, $Res Function(NoteListState) then) =
       _$NoteListStateCopyWithImpl<$Res, NoteListState>;
   @useResult
-  $Res call({bool isLoading, List<NoteModel> notes, String? errorMessage});
+  $Res call(
+      {bool isLoading,
+      List<NoteModel> notes,
+      String? errorMessage,
+      int currentIndex});
 }
 
 /// @nodoc
@@ -54,6 +59,7 @@ class _$NoteListStateCopyWithImpl<$Res, $Val extends NoteListState>
     Object? isLoading = null,
     Object? notes = null,
     Object? errorMessage = freezed,
+    Object? currentIndex = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -68,6 +74,10 @@ class _$NoteListStateCopyWithImpl<$Res, $Val extends NoteListState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      currentIndex: null == currentIndex
+          ? _value.currentIndex
+          : currentIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -80,7 +90,11 @@ abstract class _$$_$NoteListStateImplCopyWith<$Res>
       __$$_$NoteListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<NoteModel> notes, String? errorMessage});
+  $Res call(
+      {bool isLoading,
+      List<NoteModel> notes,
+      String? errorMessage,
+      int currentIndex});
 }
 
 /// @nodoc
@@ -99,6 +113,7 @@ class __$$_$NoteListStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? notes = null,
     Object? errorMessage = freezed,
+    Object? currentIndex = null,
   }) {
     return _then(_$_$NoteListStateImpl(
       isLoading: null == isLoading
@@ -113,6 +128,10 @@ class __$$_$NoteListStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      currentIndex: null == currentIndex
+          ? _value.currentIndex
+          : currentIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -123,7 +142,8 @@ class _$_$NoteListStateImpl implements __$NoteListState {
   const _$_$NoteListStateImpl(
       {this.isLoading = false,
       final List<NoteModel> notes = const [],
-      this.errorMessage})
+      this.errorMessage,
+      this.currentIndex = 0})
       : _notes = notes;
 
   @override
@@ -140,10 +160,13 @@ class _$_$NoteListStateImpl implements __$NoteListState {
 
   @override
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final int currentIndex;
 
   @override
   String toString() {
-    return 'NoteListState(isLoading: $isLoading, notes: $notes, errorMessage: $errorMessage)';
+    return 'NoteListState(isLoading: $isLoading, notes: $notes, errorMessage: $errorMessage, currentIndex: $currentIndex)';
   }
 
   @override
@@ -155,12 +178,14 @@ class _$_$NoteListStateImpl implements __$NoteListState {
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other._notes, _notes) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.currentIndex, currentIndex) ||
+                other.currentIndex == currentIndex));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isLoading,
-      const DeepCollectionEquality().hash(_notes), errorMessage);
+      const DeepCollectionEquality().hash(_notes), errorMessage, currentIndex);
 
   /// Create a copy of NoteListState
   /// with the given fields replaced by the non-null parameter values.
@@ -176,7 +201,8 @@ abstract class __$NoteListState implements NoteListState {
   const factory __$NoteListState(
       {final bool isLoading,
       final List<NoteModel> notes,
-      final String? errorMessage}) = _$_$NoteListStateImpl;
+      final String? errorMessage,
+      final int currentIndex}) = _$_$NoteListStateImpl;
 
   @override
   bool get isLoading;
@@ -184,6 +210,8 @@ abstract class __$NoteListState implements NoteListState {
   List<NoteModel> get notes;
   @override
   String? get errorMessage;
+  @override
+  int get currentIndex;
 
   /// Create a copy of NoteListState
   /// with the given fields replaced by the non-null parameter values.

@@ -1,20 +1,67 @@
 import 'dart:ui';
 
 import 'package:ai_notes/model/note_model.dart';
+import 'package:ai_notes/model/note_option_enum.dart';
 import 'package:ai_notes/utils/date_formate.dart';
+import 'package:ai_notes/utils/navigation.dart';
 import 'package:flutter/material.dart';
 
 class NoteCard extends StatelessWidget {
-  const NoteCard({super.key, required this.note, required this.onTap});
+  const NoteCard({
+    super.key,
+    required this.note,
+    required this.onTap,
+    required this.onLongTap,
+  });
 
   final NoteModel note;
   final VoidCallback onTap;
+  final Function(NoteOptionsEnum) onLongTap;
+
+  handleLongPress({
+    required BuildContext context,
+    required Function(NoteOptionsEnum) onLongTap,
+  }) {
+    showDialog(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    context.pop();
+                    onLongTap(NoteOptionsEnum.delete);
+                  },
+                  child: const Text("Delete"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    context.pop();
+                    onLongTap(NoteOptionsEnum.private);
+                  },
+                  child: const Text("Private"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    context.pop();
+                    onLongTap(NoteOptionsEnum.pin);
+                  },
+                  child: const Text("Pinned"),
+                ),
+              ],
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      onLongPress: () {},
+      onLongPress: () =>
+          handleLongPress(context: context, onLongTap: onLongTap),
       child: IntrinsicHeight(
         child: Container(
           width: double.infinity,
