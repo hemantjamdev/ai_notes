@@ -7,7 +7,7 @@ class NoteListState with _$NoteListState {
     @Default([]) List<NoteModel> notes,
     String? errorMessage,
     @Default(0) int currentIndex,
-  }) = __$NoteListState;
+  }) = _NoteListState;
 }
 
 extension NoteStateX on List<NoteModel> {

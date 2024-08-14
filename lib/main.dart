@@ -13,6 +13,5 @@ void main() async {
   Hive.init(dir.path);
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(Strings.databaseName);
-  await Hive.openBox<String>(Strings.titleDatabaseName);
   runApp(const NoteApp());
 }

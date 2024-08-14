@@ -14,15 +14,10 @@ class DBHelper {
 
   DBHelper._internal();
 
-  saveTitle(String titleName) async {
-    final hive = await Hive.openBox<String>(Strings.titleDatabaseName);
-    hive.put(Strings.titleDatabaseKey, titleName);
-  }
-
-  restoreBackup(NoteModel noteModel) async {
-    final hive = await Hive.openBox<NoteModel>(Strings.databaseName);
-    hive.put(noteModel.id, noteModel);
-  }
+  // restoreBackup(NoteModel noteModel) async {
+  //   final hive = await Hive.openBox<NoteModel>(Strings.databaseName);
+  //   hive.put(noteModel.id, noteModel);
+  // }
 
   void addNote({required NoteModel note}) async {
     final hive = await Hive.openBox<NoteModel>(Strings.databaseName);

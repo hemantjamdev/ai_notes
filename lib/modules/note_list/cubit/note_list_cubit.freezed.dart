@@ -83,11 +83,11 @@ class _$NoteListStateCopyWithImpl<$Res, $Val extends NoteListState>
 }
 
 /// @nodoc
-abstract class _$$_$NoteListStateImplCopyWith<$Res>
+abstract class _$$NoteListStateImplCopyWith<$Res>
     implements $NoteListStateCopyWith<$Res> {
-  factory _$$_$NoteListStateImplCopyWith(_$_$NoteListStateImpl value,
-          $Res Function(_$_$NoteListStateImpl) then) =
-      __$$_$NoteListStateImplCopyWithImpl<$Res>;
+  factory _$$NoteListStateImplCopyWith(
+          _$NoteListStateImpl value, $Res Function(_$NoteListStateImpl) then) =
+      __$$NoteListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -98,11 +98,11 @@ abstract class _$$_$NoteListStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_$NoteListStateImplCopyWithImpl<$Res>
-    extends _$NoteListStateCopyWithImpl<$Res, _$_$NoteListStateImpl>
-    implements _$$_$NoteListStateImplCopyWith<$Res> {
-  __$$_$NoteListStateImplCopyWithImpl(
-      _$_$NoteListStateImpl _value, $Res Function(_$_$NoteListStateImpl) _then)
+class __$$NoteListStateImplCopyWithImpl<$Res>
+    extends _$NoteListStateCopyWithImpl<$Res, _$NoteListStateImpl>
+    implements _$$NoteListStateImplCopyWith<$Res> {
+  __$$NoteListStateImplCopyWithImpl(
+      _$NoteListStateImpl _value, $Res Function(_$NoteListStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of NoteListState
@@ -115,7 +115,7 @@ class __$$_$NoteListStateImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? currentIndex = null,
   }) {
-    return _then(_$_$NoteListStateImpl(
+    return _then(_$NoteListStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -138,8 +138,8 @@ class __$$_$NoteListStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_$NoteListStateImpl implements __$NoteListState {
-  const _$_$NoteListStateImpl(
+class _$NoteListStateImpl implements _NoteListState {
+  const _$NoteListStateImpl(
       {this.isLoading = false,
       final List<NoteModel> notes = const [],
       this.errorMessage,
@@ -173,7 +173,7 @@ class _$_$NoteListStateImpl implements __$NoteListState {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_$NoteListStateImpl &&
+            other is _$NoteListStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other._notes, _notes) &&
@@ -192,17 +192,16 @@ class _$_$NoteListStateImpl implements __$NoteListState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_$NoteListStateImplCopyWith<_$_$NoteListStateImpl> get copyWith =>
-      __$$_$NoteListStateImplCopyWithImpl<_$_$NoteListStateImpl>(
-          this, _$identity);
+  _$$NoteListStateImplCopyWith<_$NoteListStateImpl> get copyWith =>
+      __$$NoteListStateImplCopyWithImpl<_$NoteListStateImpl>(this, _$identity);
 }
 
-abstract class __$NoteListState implements NoteListState {
-  const factory __$NoteListState(
+abstract class _NoteListState implements NoteListState {
+  const factory _NoteListState(
       {final bool isLoading,
       final List<NoteModel> notes,
       final String? errorMessage,
-      final int currentIndex}) = _$_$NoteListStateImpl;
+      final int currentIndex}) = _$NoteListStateImpl;
 
   @override
   bool get isLoading;
@@ -217,6 +216,6 @@ abstract class __$NoteListState implements NoteListState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$_$NoteListStateImplCopyWith<_$_$NoteListStateImpl> get copyWith =>
+  _$$NoteListStateImplCopyWith<_$NoteListStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

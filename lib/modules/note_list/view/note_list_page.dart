@@ -143,12 +143,22 @@ class _NoteListView extends StatelessWidget {
     NoteOptionsEnum type,
   ) {
     switch (type) {
-      case NoteOptionsEnum.pin:
+      case NoteOptionsEnum.pinned:
         context.cubit.onPinned(noteModel);
       case NoteOptionsEnum.delete:
         context.cubit.onDelete(noteModel);
       case NoteOptionsEnum.private:
         context.cubit.onPrivate(noteModel);
+      case NoteOptionsEnum.view:
+      // TODO: Handle this case.
+      case NoteOptionsEnum.edit:
+      // TODO: Handle this case.
+      case NoteOptionsEnum.copy:
+      // TODO: Handle this case.
+      case NoteOptionsEnum.send:
+      // TODO: Handle this case.
+      case NoteOptionsEnum.sendImage:
+      // TODO: Handle this case.
     }
   }
 

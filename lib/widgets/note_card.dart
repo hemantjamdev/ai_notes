@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:ai_notes/model/note_model.dart';
 import 'package:ai_notes/model/note_option_enum.dart';
 import 'package:ai_notes/utils/date_formate.dart';
-import 'package:ai_notes/utils/navigation.dart';
 import 'package:flutter/material.dart';
 
 class NoteCard extends StatelessWidget {
@@ -22,38 +21,61 @@ class NoteCard extends StatelessWidget {
     required BuildContext context,
     required Function(NoteOptionsEnum) onLongTap,
   }) {
-    showDialog(
+    showModalBottomSheet(
+        constraints: BoxConstraints(minWidth: double.infinity),
         context: context,
         builder: (_) {
-          return AlertDialog(
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    context.pop();
-                    onLongTap(NoteOptionsEnum.delete);
-                  },
-                  child: const Text("Delete"),
-                ),
-                TextButton(
-                  onPressed: () {
-                    context.pop();
-                    onLongTap(NoteOptionsEnum.private);
-                  },
-                  child: const Text("Private"),
-                ),
-                TextButton(
-                  onPressed: () {
-                    context.pop();
-                    onLongTap(NoteOptionsEnum.pin);
-                  },
-                  child: const Text("Pinned"),
-                ),
-              ],
-            ),
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ...NoteOptionsEnum.values.map((e) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    e.getTitle(e),
+                    style: TextStyle(
+                      color: e.isDelete ? Colors.red : null,
+                    ),
+                  ),
+                );
+              }),
+              Text("Cancel")
+            ],
           );
         });
+    // showDialog(
+    //     context: context,
+    //     builder: (_) {
+    //       return AlertDialog(
+    //         content: Column(
+    //           mainAxisSize: MainAxisSize.min,
+    //           children: [
+    //             TextButton(
+    //               onPressed: () {
+    //                 context.pop();
+    //                 onLongTap(NoteOptionsEnum.delete);
+    //               },
+    //               child: const Text("Delete"),
+    //             ),
+    //             TextButton(
+    //               onPressed: () {
+    //                 context.pop();
+    //                 onLongTap(NoteOptionsEnum.private);
+    //               },
+    //               child: const Text("Private"),
+    //             ),
+    //             TextButton(
+    //               onPressed: () {
+    //                 context.pop();
+    //                 onLongTap(NoteOptionsEnum.pinned);
+    //               },
+    //               child: const Text("Pinned"),
+    //             ),
+    //           ],
+    //         ),
+    //       );
+    //     });
   }
 
   @override
